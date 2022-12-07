@@ -1,0 +1,32 @@
+@mixin responsive($breakPoint) {
+  @if ($breakPoint == xs) {
+    @media (max-width: 280px) {
+      @content;
+    }
+  }
+  @if ($breakPoint == sm) {
+    @media (max-width: 411px) {
+      @content;
+    }
+  }
+  @if ($breakPoint == md) {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+  @if ($breakPoint == lg) {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+  @if ($breakPoint == xl) {
+    @media (max-width: 1563px) {
+      @content;
+    }
+  }
+  @if (type-of($breakPoint) == number) {
+    @media (max-width: $breakPoint) {
+      @content;
+    }
+  }
+}
