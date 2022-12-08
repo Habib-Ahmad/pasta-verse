@@ -1,21 +1,13 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { desktopImages, mobileImages } from "../data";
+import Input from "../components/input";
+import BackgroundImages from "../components/BackgroundImages";
 import logo from "../assets/logo.png";
 import arrow from "../assets/arrow.svg";
 import styles from "../styles/home.module.scss";
-import { useEffect, useState } from "react";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Input from "../components/input";
-import { useProgressiveImage } from "../hooks/useProgressiveImage";
 
 const Home = () => {
   const [index, setIndex] = useState(0);
-
-  const images = useMediaQuery("(min-width:769px)")
-    ? desktopImages
-    : mobileImages;
-  const loaded = useProgressiveImage(images[index].src);
-  const placeholder = images[5].src;
 
   const handleNext = () => {
     setIndex((prev) => {
@@ -34,10 +26,8 @@ const Home = () => {
   }, [index]);
 
   return (
-    <div
-      className={styles.container}
-      style={{ backgroundImage: `url(${loaded || placeholder})` }}
-    >
+    <div className={styles.container}>
+      <BackgroundImages index={index} />
       <header className={styles.logoWrapper}>
         <Image src={logo} alt="pasta verse" width={"100%"} height={"100%"} />
       </header>
@@ -58,7 +48,7 @@ const Home = () => {
       </main>
 
       <div className={styles.dots}>
-        {images.map((img, idx) => (
+        {new Array(6).fill("").map((img, idx) => (
           <span
             key={idx}
             onClick={() => setIndex(idx)}

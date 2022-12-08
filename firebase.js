@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBOqlsCsqJ-X6Zuce6Avn1Oqc45NeH3AL0",
+  apiKey: process.env.API_KEY,
   authDomain: "pasta-verse.firebaseapp.com",
   projectId: "pasta-verse",
   storageBucket: "pasta-verse.appspot.com",
