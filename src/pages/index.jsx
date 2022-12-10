@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Input from "../components/input";
 import BackgroundImages from "../components/BackgroundImages";
@@ -17,14 +17,6 @@ const Home = () => {
     });
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      handleNext();
-    }, [5000]);
-
-    return () => clearTimeout(timer);
-  }, [index]);
-
   return (
     <div className={styles.container}>
       <BackgroundImages index={index} />
@@ -35,12 +27,14 @@ const Home = () => {
       <main className={styles.main}>
         <div className={styles.textWrapper}>
           <h1>
-            The future of <span className={styles.pasta}>pasta</span> is here.
+            The world's first fresh <span className={styles.pasta}>pasta</span>{" "}
+            vending machine
           </h1>
 
           <p className={styles.description}>
-            When it comes to taste and texture, there's a big difference between
-            fresh pasta and dried, boxed pasta products.
+            Pastaverse cooks and dispense wide variety of customized pasta
+            shapes, colors and recipes within few minutes. Available in public
+            spaces soon
           </p>
 
           <Input />

@@ -15,30 +15,30 @@
 
   img {
     max-width: 33%;
+    object-fit: contain;
+    max-height: 100%;
     @include responsive(md) {
       max-width: 100%;
     }
-    object-fit: contain;
-    max-height: 100%;
   }
 }
 
 .main {
   height: 85vh;
-  padding: 10vw;
+  padding: 5vw 10vw;
   @include responsive(md) {
     padding: 5vw;
   }
 }
 
 .textWrapper {
-  max-width: 50%;
+  max-width: 60%;
   @include responsive(md) {
     max-width: 100%;
   }
 
   h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 800;
     text-transform: capitalize;
     color: transparent;
@@ -51,10 +51,10 @@
     -moz-text-fill-color: transparent;
     @include responsive(md) {
       text-align: center;
-      font-size: 3.5rem;
+      font-size: 3rem;
     }
     @include responsive(sm) {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
 
     .pasta {
@@ -70,7 +70,9 @@
     font-size: 1.2rem;
     font-weight: 500;
     margin-top: 20px;
+    line-height: 1.5rem;
     @include responsive(md) {
+      text-align: center;
       font-size: 1rem;
     }
     @include responsive(sm) {

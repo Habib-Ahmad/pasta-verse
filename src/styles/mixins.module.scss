@@ -10,7 +10,7 @@
     }
   }
   @if ($breakPoint == md) {
-    @media (max-width: 768px) {
+    @media (max-width: 860px) {
       @content;
     }
   }
