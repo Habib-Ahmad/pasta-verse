@@ -1,13 +1,23 @@
 import { useState } from "react";
 import Image from "next/image";
-import Input from "../components/input";
+import { Button, Modal } from "@mui/material";
 import BackgroundImages from "../components/BackgroundImages";
+import SubscribeForm from "../components/SubscribeForm";
+import Success from "../components/Success";
 import logo from "../assets/logo.png";
 import arrow from "../assets/arrow.svg";
 import styles from "../styles/home.module.scss";
 
 const Home = () => {
   const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+    setSuccess(false);
+  };
 
   const handleNext = () => {
     setIndex((prev) => {
@@ -37,7 +47,9 @@ const Home = () => {
             spaces soon
           </p>
 
-          <Input />
+          <Button variant="contained" size="large" onClick={handleOpen}>
+            Notify me
+          </Button>
         </div>
       </main>
 
@@ -54,6 +66,16 @@ const Home = () => {
       <div className={styles.arrow} onClick={handleNext}>
         <Image src={arrow} alt="next image" width={"100%"} height={"100%"} />
       </div>
+
+      <Modal open={open} onClose={handleClose}>
+        <div className={styles.modalContent}>
+          {success ? (
+            <Success handleClose={handleClose} />
+          ) : (
+            <SubscribeForm handleClose={handleClose} setSuccess={setSuccess} />
+          )}
+        </div>
+      </Modal>
     </div>
   );
 };
