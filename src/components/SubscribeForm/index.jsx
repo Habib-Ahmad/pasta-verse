@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button, CircularProgress, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import emailjs from "@emailjs/browser";
 import uuid from "react-uuid";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
@@ -12,9 +13,15 @@ import styles from "./styles.module.scss";
 const SubscribeForm = ({ handleClose, setSuccess }) => {
   const handleSubmit = async (values) => {
     const id = uuid();
-    await setDoc(doc(db, `subscribers/${id}`), { ...values }).then(() =>
-      setSuccess(true)
-    );
+    await setDoc(doc(db, `subscribers/${id}`), { ...values }).then(() => {
+      setSuccess(true);
+      emailjs.send(
+        "service_xpeawzp",
+        "template_k27rfpq",
+        values,
+        "N6gXtnhG2EYstoEdK"
+      );
+    });
   };
 
   return (

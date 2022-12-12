@@ -28,14 +28,6 @@ export const theme = createTheme({
       },
     },
 
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          // backgroundColor: "#ffffff05",
-        },
-      },
-    },
-
     MuiCircularProgress: {
       styleOverrides: {
         root: {
